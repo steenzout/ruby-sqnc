@@ -1,0 +1,8 @@
+**/.rakeTasks
+
+**/**/*.tch
+**/Gemfile.lock
+
+**/*.gem
+**/log/*.log
+
