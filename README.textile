@@ -1,0 +1,35 @@
+h1. Introduction
+
+# TODO
+
+
+
+h1. Configuration
+
+
+h2. implement sequence on a file
+
+<pre><code>:steenzout-sqnc:
+  :implementation: :file
+  :sequences:
+    :seq1:
+      :location: '/opt/local/steenzout/sequence1'
+    :seq2:
+      :location: '/opt/local/steenzout/sequence2'
+      :step: 100
+      :offset: 100
+</code></pre>
+
+
+h2. implement sequence on a TokyoCabinet database
+
+<pre><code>:steenzout-sqnc:
+  :implementation: :tokyocabinet
+  :sequences:
+    :seq1:
+      :location: '/opt/local/steenzout/sequence1.tch'
+    :seq2:
+      :location: '/opt/local/steenzout/sequence2.tch'
+      :step: 100
+      :offset: 100
+</code></pre>

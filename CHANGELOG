@@ -1,0 +1,10 @@
+# Changelog format must be
+# * [dow mon dd yyyy] [packager] [version]
+#    -list of changes
+#
+#
+#
+Tue Mar 15 2011 steenzout 1.0.0
+    - added sequence management using regular files
+    - added placeholders for sequence management using TokyoCabinet
+    - added placeholders for sequence management using KyotoCabinet
