@@ -1,0 +1,9 @@
+:steenzout-sqnc:
+  :implementation: :file
+  :sequences:
+    :seq1:
+      :location: 'test/sequence1'
+    :seq2:
+      :location: 'test/sequence2'
+      :step: 100
+      :offset: 100
