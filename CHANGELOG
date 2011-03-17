@@ -4,6 +4,10 @@
 #
 #
 #
+Tue Mar 17 2011 steenzout 1.0.6
+    - removed print statements
+    - fixed variable reference
+
 Tue Mar 17 2011 steenzout 1.0.2
     - added sequence management using regular files
     - added placeholders for sequence management using TokyoCabinet
