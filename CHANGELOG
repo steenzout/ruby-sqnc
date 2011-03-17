@@ -4,7 +4,7 @@
 #
 #
 #
-Tue Mar 15 2011 steenzout 1.0.0
+Tue Mar 17 2011 steenzout 1.0.2
     - added sequence management using regular files
     - added placeholders for sequence management using TokyoCabinet
     - added placeholders for sequence management using KyotoCabinet
