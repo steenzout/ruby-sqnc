@@ -1,6 +1,6 @@
 h1. Introduction
 
-# TODO
+This gem provides simple sequence management functionality.
 
 
 
