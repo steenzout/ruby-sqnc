@@ -6,6 +6,8 @@ h1. Introduction
 
 h1. Configuration
 
+You can only use one type of sequence manager implementation.
+
 
 h2. implement sequence on a file
 
