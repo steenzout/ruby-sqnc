@@ -2,8 +2,12 @@ module Steenzout
 
   class SequenceManager
 
-    @@sequences = {}
-    @@implementations = [:file]
+    class << self; attr_accessor :sequences end
+    class << self; attr_accessor :implementations end
+
+    @config = nil
+    @sequences = {}
+    @implementations = [:file]
 
 
     private
@@ -12,35 +16,35 @@ module Steenzout
       #
       def self.load_sequences
 
-        @@config[:sequences].each_key do |name|
+        @config[:sequences].each_key do |name|
 
 
           # validate :location
 
           raise ArgumentError.new \
-            "Sequence file location #{@@config[:sequences][name][:location]} needs to be defined!" \
-            if !@@config[:sequences][name].has_key? :location
+            "Sequence file location #{@config[:sequences][name][:location]} needs to be defined!" \
+            if !@config[:sequences][name].has_key? :location
 
 
           # validate :offset
 
-          @@config[:sequences][name][:offset] ||= 0
+          @config[:sequences][name][:offset] ||= 0
           raise ArgumentError.new \
-            "Offset value #{@@config[:sequences][name][:offset]} for #{name} sequence needs to be >= 0!" \
-            if @@config[:sequences][name][:offset] < 0
+            "Offset value #{@config[:sequences][name][:offset]} for #{name} sequence needs to be >= 0!" \
+            if @config[:sequences][name][:offset] < 0
 
 
           # validate :step
 
-          @@config[:sequences][name][:step] ||= 1
+          @config[:sequences][name][:step] ||= 1
           raise ArgumentError.new \
-            "Step value #{@@config[:sequences][name][:step]} for #{name} sequence needs to be > 0!" \
-            if @@config[:sequences][name][:step] <= 0
+            "Step value #{@config[:sequences][name][:step]} for #{name} sequence needs to be > 0!" \
+            if @config[:sequences][name][:step] <= 0
 
 
           # initialize sequence
 
-          @@sequences[name] = nil
+          @sequences[name] = nil
 
         end
 
@@ -53,7 +57,7 @@ module Steenzout
       # Returns the list of allowed sequence management implementations.
       #
       def self.implementations
-        @@implementations
+        @implementations
       end
 
 
@@ -64,25 +68,25 @@ module Steenzout
 
         # retrieve configuration
 
-        @@config = Steenzout::ConfigurationManager.configuration_for_gem 'steenzout-sqnc'
-        @@config[:sequences] ||= {}
+        @config = Steenzout::ConfigurationManager.configuration_for_gem 'steenzout-sqnc'
+        @config[:sequences] ||= {}
 
 
         # validation
 
-        if !@@config.has_key? :implementation or @@config[:implementation].nil?
+        if !@config.has_key? :implementation or @config[:implementation].nil?
           error_message = "implementation property is missing from the configuration file!"
           raise ArgumentError.new error_message
         end
 
-        raise ArgumentError.new "there is no #{@@config[:implementation]} implementation!" if
-            !@@implementations.include? @@config[:implementation] or
-                !File.exist? "#{File.dirname(__FILE__)}/#{@@config[:implementation]}/manager.rb"
+        raise ArgumentError.new "there is no #{@config[:implementation]} implementation!" if
+            !@implementations.include? @config[:implementation] or
+                !File.exist? "#{File.dirname(__FILE__)}/#{@config[:implementation]}/manager.rb"
 
 
         # load implementation
 
-        require "#{File.dirname(__FILE__)}/#{@@config[:implementation]}/manager"
+        require "#{File.dirname(__FILE__)}/#{@config[:implementation]}/manager"
 
 
         # load sequences
@@ -100,9 +104,9 @@ module Steenzout
       #
       def self.current_value name
 
-        raise ArgumentError.new "The sequence #{name} doesn't exist!" if !@@sequences.has_key? name
+        raise ArgumentError.new "The sequence #{name} doesn't exist!" if !@sequences.has_key? name
 
-        return @@sequences[name]
+        return @sequences[name]
 
       end
 
@@ -113,7 +117,7 @@ module Steenzout
       # @param name: the sequence name.
       #
       def self.increment name
-        raise ArgumentError.new "The sequence #{name} doesn't exist!" if !@@sequences.has_key? name
+        raise ArgumentError.new "The sequence #{name} doesn't exist!" if !@sequences.has_key? name
         self.increment_and_store name
       end
 
@@ -121,7 +125,7 @@ module Steenzout
       # Returns a list of the current sequence names being managed.
       #
       def self.sequences
-        @@sequences.each_key {|name|
+        @sequences.each_key {|name|
           yield name
         }
       end
