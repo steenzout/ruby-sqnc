@@ -3,7 +3,7 @@ require 'rake'
 spec = Gem::Specification.new do |s|
 
   s.name         = 'steenzout-sqnc'
-  s.version      = '1.0.2'
+  s.version      = '1.0.4'
 
   s.authors      = ['steenzout']
 
@@ -24,6 +24,6 @@ EOF
   s.files        = FileList["{lib}/**/*"].to_a
   s.test_files   = FileList["{test}/**/*test.rb"].to_a
 
-  s.add_dependency 'steenzout-cfg', '>= 1.0.2'
+  s.add_dependency 'steenzout-cfg', '>= 1.0.4'
 
 end
