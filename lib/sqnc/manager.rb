@@ -2,12 +2,12 @@ module Steenzout
 
   class SequenceManager
 
-    class << self; attr_accessor :sequences end
-    class << self; attr_accessor :implementations end
-
     @config = nil
     @sequences = {}
     @implementations = [:file]
+
+    class << self; attr_accessor :sequences end
+    class << self; attr_accessor :implementations end
 
 
     private
@@ -54,10 +54,36 @@ module Steenzout
 
     public
 
+      # Returns the current in-memory value for this sequence.
+      # WARNING: if the sequence hasn't been used yet, a nil value will be returned.
+      #
+      # @param name: the sequence name.
+      #
+      def self.current_value(name)
+
+        raise ArgumentError.new "The sequence #{name} doesn't exist!" if !@sequences.has_key? name
+
+        return @sequences[name]
+
+      end
+
+
+
       # Returns the list of allowed sequence management implementations.
       #
       def self.implementations
         @implementations
+      end
+
+
+
+      # Increments and returns the given sequence by step (or offset + step if it has never been used before).
+      #
+      # @param name: the sequence name.
+      #
+      def self.increment(name)
+        raise ArgumentError.new "The sequence #{name} doesn't exist!" if !@sequences.has_key? name
+        self.increment_and_store name
       end
 
 
@@ -95,31 +121,6 @@ module Steenzout
 
       end
 
-
-
-      # Returns the current in-memory value for this sequence.
-      # WARNING: if the sequence hasn't been used yet, a nil value will be returned.
-      #
-      # @param name: the sequence name.
-      #
-      def self.current_value name
-
-        raise ArgumentError.new "The sequence #{name} doesn't exist!" if !@sequences.has_key? name
-
-        return @sequences[name]
-
-      end
-
-
-
-      # Increments and returns the given sequence by step (or offset + step if it has never been used before).
-      #
-      # @param name: the sequence name.
-      #
-      def self.increment name
-        raise ArgumentError.new "The sequence #{name} doesn't exist!" if !@sequences.has_key? name
-        self.increment_and_store name
-      end
 
 
       # Returns a list of the current sequence names being managed.
