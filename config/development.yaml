@@ -2,8 +2,10 @@
   :implementation: :file
   :sequences:
     :seq1:
-      :location: 'test/sequence1'
+      :location: 'test/sz.sqnc.sq1'
     :seq2:
-      :location: 'test/sequence2'
+      :location: 'test/sz.sqnc.sq2'
       :step: 100
       :offset: 100
+    :seq3:
+      :location: 'test/sz.sqnc.sq3'
