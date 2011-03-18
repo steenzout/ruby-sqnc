@@ -4,6 +4,9 @@
 #
 #
 #
+Tue Mar 17 2011 steenzout 1.0.8
+    - fixed problem when storing value into file.
+
 Tue Mar 17 2011 steenzout 1.0.6
     - removed print statements
     - fixed variable reference
