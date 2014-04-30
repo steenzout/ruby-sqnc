@@ -4,9 +4,6 @@
 [![Gem Version](https://badge.fury.io/rb/steenzout-sqnc.svg)](http://badge.fury.io/rb/steenzout-sqnc)
 
 
-
-## Introduction
-
 This gem provides simple sequence management functionality.
 
 
