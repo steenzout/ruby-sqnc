@@ -1,15 +1,22 @@
-h1. Introduction
+# steenzout-sqnc
+
+[![Code Climate](https://codeclimate.com/github/steenzout/steenzout-sqnc.png)](https://codeclimate.com/github/steenzout/steenzout-sqnc)
+[![Gem Version](https://badge.fury.io/rb/steenzout-sqnc.svg)](http://badge.fury.io/rb/steenzout-sqnc)
+
+
+
+## Introduction
 
 This gem provides simple sequence management functionality.
 
 
 
-h1. Configuration
+## Configuration
 
 You can only use one type of sequence manager implementation.
 
 
-h2. implement sequence on a file
+### implement sequence on a file
 
 <pre><code>:steenzout-sqnc:
   :implementation: :file
@@ -23,7 +30,7 @@ h2. implement sequence on a file
 </code></pre>
 
 
-h2. implement sequence on a TokyoCabinet database
+### implement sequence on a TokyoCabinet database
 
 <pre><code>:steenzout-sqnc:
   :implementation: :tokyocabinet
