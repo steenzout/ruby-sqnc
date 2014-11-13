@@ -2,6 +2,7 @@
 
 [![Code Climate](https://codeclimate.com/github/steenzout/steenzout-sqnc.png)](https://codeclimate.com/github/steenzout/steenzout-sqnc)
 [![Gem Version](https://badge.fury.io/rb/steenzout-sqnc.svg)](http://badge.fury.io/rb/steenzout-sqnc)
+[![steenzout-cfg API Documentation](https://www.omniref.com/ruby/gems/steenzout-cfg.png)](https://www.omniref.com/ruby/gems/steenzout-cfg)
 
 
 This gem provides simple sequence management functionality.
